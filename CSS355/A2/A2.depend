@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1567664868 source:/home/surya/Desktop/Assignment/A2/main.cpp
+	<iostream>
+	"Stack.h"
+
+1567664869 /home/surya/Desktop/Assignment/A2/include/Stack.h
+	<iostream>
+	<iomanip>
+
+1567662094 source:/home/surya/Desktop/Assignment/A2/src/Stack.cpp
+	"Stack.h"
+
