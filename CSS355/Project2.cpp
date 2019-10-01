@@ -29,7 +29,8 @@ class Stack{
         intNodePtr top;
     public:
       Stack();
-      bool Push(int inData);
+      Stack(const Stack&d);
+      void Push(int inData);
       bool Pop();
       void initializeStack();
       bool IsEmpty()const;
@@ -42,6 +43,12 @@ class Stack{
 template<class T>
 Stack<T>::Stack(){
       top = NULL;
+}
+template<class T>
+Stack<T>::Stack(const Stack&d)
+{
+ top=d.top;
+ 
 }
 template<class T>
 void Stack<T>::initializeStack()
@@ -58,9 +65,10 @@ void Stack<T>::initializeStack()
 
 }
 template<class T>
-bool Stack<T>::Push(int inData){
+void Stack<T>::Push(int inData){
    intNodePtr temp = new intNode(inData, top);
    top=temp;
+   
 }
 template<class T>
 int Stack<T>:: showTop() const
@@ -114,16 +122,20 @@ void Stack<T>::Print()
         exit(1);
     }
     else {
-
+        cout<<"(";
         while (temp != NULL) {
 
             // print node data
-            cout <<  temp->getData() <<"<-";
-
+           
+           
+            cout << temp->getData()<<" " ;
+            
 
             // assign temp link to temp
             temp = temp->getLink();
         }
+        cout<<"["<<showTop<<"]";
+        cout<<")";
     }
 }
 template<class T>
@@ -164,12 +176,12 @@ int main(){
     cout<<"2- Test assignment operator"<<endl;
     cout<<"3- Test Destructor"<<endl;
 
-    cin>>x;
+    cin>>x >>item;
     if(x=="+")
         {
-            cout<<"Enter value to push:";
-            cin>>item;
+            
             s.Push(item);
+            
             s.Print();
             
         }
@@ -188,7 +200,10 @@ int main(){
         {
             cout<<"Enter value to search:";
             cin>>item;
-            s.Search(item);
+            if(s.Search(item)==1)
+                cout<<"Item Found"<<endl;
+            else
+                cout<<"Not Found"<<endl;
 
 
         }
@@ -206,13 +221,17 @@ int main(){
             cout<<"Top:"<<s.showTop() <<endl;
 
         }
-
-    /*
-
     else if(x=="1")
+         {
+                   
+            //cout<<s.Stack(2);
+            //cout<<s.
 
+
+         }
+    /*
+    
     else if(x=="2")
-
     else if(x=="3")
     cin >> x;
     while (x){
@@ -229,4 +248,3 @@ int main(){
     }*/
     return 0;
 }
-
